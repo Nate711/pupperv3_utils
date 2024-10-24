@@ -1,13 +1,14 @@
 [Unit]
 Description=robot
+After=multi-user.target getty.target
+Wants=multi-user.target
 
 [Service]
 User=pi
 WorkingDirectory=/home/pi
 ExecStart=/home/pi/utils/robot.sh
-CapabilityBoundingSet=CAP_SYS_NICE
-LimitRTPRIO=infinity
-LimitCPU=infinity
+IOSchedulingClass=1
+IOSchedulingPriority=1
 
 [Install]
 WantedBy=multi-user.target
